@@ -19,13 +19,13 @@
 using namespace std;
 
 struct drob{
-int ch;// ��������� / �������
-int zn;// ����������� / -
+int ch;// числитель / степень
+int zn;// знаменатель / -
 };
 struct Rational{
-drob d1;//��������� � ����������� ������� �����
-drob d2;//��������� � ����������� ������� �����
-int reductionch(int n, int m){//���������� ���������
+drob d1;//числитель и знаменатель первого числа
+drob d2;//числитель и знаменатель второго числа
+int reductionch(int n, int m){//сокращение числителя
     if(n%2==0 and m%2==0)
 {
     while(n%2==0 and m%2==0)
@@ -52,7 +52,7 @@ if(n%7==0 and m%7==0)
 }
     return (n);
 }
-int reductionz(int n, int m){//���������� �����������
+int reductionz(int n, int m){//сокращение знаменателя
 
 
     if(n%2==0 and m%2==0)
@@ -81,8 +81,8 @@ if(n%7==0 and m%7==0)
 }
     return (m);
 }
-int multiplication(){//���������
-    int n, m;//����� ��������� � ����� �����������
+int multiplication(){//умножение
+    int n, m;
     n = d1.ch*d2.ch;
     m = d1.zn*d2.zn;
     Rational a;
@@ -91,8 +91,8 @@ int multiplication(){//���������
      m = a.reductionz(h,m);
    cout << "numerator = " << n << "  denominator = " << m << endl;
 }
-int division(){//�������
-    int n, m;//����� ��������� � ����� �����������
+int division(){//деление
+    int n, m;
     n = d1.ch*d2.zn;
     m = d1.zn*d2.ch;
     Rational a;
@@ -102,8 +102,8 @@ int division(){//�������
 
    cout << "numerator = " << n << "  denominator = " << m << endl;
 }
-int sum(){// ��������
-    int n, m;//����� ��������� � ����� �����������
+int sum(){// сложение
+    int n, m;
     n = d1.ch*d2.zn + d2.ch*d1.zn;
     m = d1.zn*d2.zn;
     Rational a;
@@ -112,7 +112,7 @@ int sum(){// ��������
      m = a.reductionz(h,m);
     cout << "numerator = " << n << "  denominator = " << m << endl;
 }
-int degree(){// ���������� � �������
+int degree(){// возведение в степень
     int n = d1.ch;
     int m = d1.zn;
     int s = d2.ch;
@@ -139,8 +139,8 @@ int degree(){// ���������� � �������
     }
 
 }
-int difference(){// ���������
-    int n, m;//����� ��������� � ����� �����������
+int difference(){//разность
+    int n, m;
     n = d1.ch*d2.zn - d2.ch*d1.zn;
     m = d1.zn*d2.zn;
     Rational a;
@@ -149,7 +149,7 @@ int difference(){// ���������
      m = a.reductionz(h,m);
         cout << "numerator = " << n << "  denominator = " << m << endl;
 }
-int more (){//���������� ��������
+int more (){//нахождение большего
     int m, n, n1, n2;
     n1 = d1.ch*d2.zn;
     n2 = d2.ch*d1.zn;
@@ -166,7 +166,7 @@ cout << "equal";
     }
     cout << "numerator = " << n << "  denominator = " << m << endl;
 }
-int less (){//���������� ��������
+int less (){//нахождение меньшего
     int m, n, n1, n2;
     n1 = d1.ch*d2.zn;
     n2 = d2.ch*d1.zn;
@@ -186,7 +186,7 @@ cout << "equal";
 };
 
 int main(){
-Rational a = {{6,4},{3,4}};//� �������� ������� ����������� ��������� � ����������� ������ � ������ ����� ����� �������
+Rational a = {{6,4},{3,4}};//в фигурных скобках перечислены числитель и знаменатель первой и второй дроби через запятую
 cout << a.multiplication() << endl;
     return 0;
 }
